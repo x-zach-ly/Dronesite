@@ -1,0 +1,10 @@
+.DroneStatus {
+    text-align:center;  
+    vertical-align: text-top;
+    line-height: 10px;
+    border-style: solid;
+    width: 20%;
+    height: 80%;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}

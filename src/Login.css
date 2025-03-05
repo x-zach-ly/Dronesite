@@ -1,0 +1,31 @@
+* {
+    padding: 2px;
+}
+.Form {
+    display: flex;
+    justify-content: center;
+}
+.Login {
+    border: 2px solid black;
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 30px;
+    width: 30%;
+    height: 340px;
+}
+.Login-logo {
+    width: 20%;
+    height: 20%;
+}
+#userID {
+    width: 70%;
+}
+#password {
+    width: 70%;
+}
+.Button {
+    width: 70%;
+}
+.ErrorMessage {
+    color: red;
+}

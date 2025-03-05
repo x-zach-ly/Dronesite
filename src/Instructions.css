@@ -1,0 +1,14 @@
+.Instructions {
+    text-align: left;
+    padding-left: 50px;
+}
+.Instructions-header {
+    padding-left: 50px;
+}
+table {
+    border: 2px solid black;
+    padding-right: 10px;
+}
+th {
+    border-bottom: 1px solid black;
+}
