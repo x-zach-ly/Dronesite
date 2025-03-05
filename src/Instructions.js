@@ -9,9 +9,9 @@ function Instructions() {
 
     const[droneNumber, setDroneNumber] = useState(1);
 
+    //hard coded rn
     const drones = [
-        {id:'1', status:'idle', currentLocation:'Station 1'},
-        {id:'2', status:'busy', currentLocation:'moving'}
+        {id:'0', status:'idle', currentLocation:'Station 1'}
     ];
 
     const columns = Object.keys(drones[0]);
@@ -27,6 +27,7 @@ function Instructions() {
                         <th>Drone ID</th>
                         <th>Status</th>
                         <th>Location</th>
+                        <th id='drop'>Actions</th>
                     </tr>
                     {drones.map((val, key) => {
                     return (
@@ -35,7 +36,7 @@ function Instructions() {
                             <td>{val.status}</td>
                             <td>{val.currentLocation}</td>
                             <button>Call Drone</button>
-                            <DestinationDropdown/>
+                            <td><DestinationDropdown/></td>
                         </tr>
                     )
                 })}
