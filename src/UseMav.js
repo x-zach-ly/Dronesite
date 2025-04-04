@@ -18,6 +18,8 @@ function UseMav() {
 
             const data = await response.json();
             setOutput(data.output || data.error);
+            console.log(data.output);
+            console.log(data.error);
         } catch (error) {
             console.error("Error:", error);
             setOutput("Failed to run executable.");
