@@ -9,7 +9,6 @@ function Login() {
 
     const navigate = useNavigate();
 
-    //const [username, setUsername] = useState('');
     const [userID, setUserID] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -29,7 +28,7 @@ function Login() {
             }
         }
         console.log("Invalid ID");
-        setMessage("Invalid userID or password")
+        setMessage("Invalid userID or password");
     }
 
     return (
@@ -40,29 +39,29 @@ function Login() {
                   <h1>User Login</h1>
               </header>
               <body className='Login-body'>
-              <div>
-                  <label htmlFor="userID">UserID:</label>
-                  <input
-                      value={userID}
-                      name="userID"
-                      id="userID"
-                      onChange={e => setUserID(e.target.value)}
-                      required
-                  />
-              </div>
-              <div>
-                  <label htmlFor="password">Password:</label>
-                  <input
-                   
-                      value={password}
-                      name="password"
-                      type="password"
-                      id="password"
-                      onChange={e => setPassword(e.target.value)}
-                      required
-                  />
-              </div>
-              <button className="Button" type="submit" onClick={onClick}>Submit</button>
+                <div>
+                    <label htmlFor="userID">UserID:</label>
+                    <input
+                        value={userID}
+                        name="userID"
+                        id="userID"
+                        onChange={e => setUserID(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                    
+                        value={password}
+                        name="password"
+                        type="password"
+                        id="password"
+                        onChange={e => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <button className="Button" type="submit" onClick={onClick}>Submit</button>
               </body>
               <p className="ErrorMessage">{message}</p>
           </div>

@@ -4,6 +4,7 @@ import DroneStatus from './DroneStatus'
 import './Instructions.css';
 import './Dropdown'
 import DestinationDropdown from "./Dropdown";
+import UseMav from "./UseMav";
 
 function Instructions() {
 
@@ -15,6 +16,10 @@ function Instructions() {
     ];
 
     const columns = Object.keys(drones[0]);
+
+    const handleClick = () => {
+        console.log("Button Clicked");
+    };
 
     return (
         <div className="Instructions">
@@ -30,16 +35,15 @@ function Instructions() {
                         <th id='drop'>Actions</th>
                     </tr>
                     {drones.map((val, key) => {
-                    return (
-                        <tr key={key}>
-                            <td>{val.id}</td>
-                            <td>{val.status}</td>
-                            <td>{val.currentLocation}</td>
-                            <button>Call Drone</button>
-                            <td><DestinationDropdown/></td>
-                        </tr>
-                    )
-                })}
+                        return (
+                            <tr key={key}>
+                                <td>{val.id}</td>
+                                <td>{val.status}</td>
+                                <td>{val.currentLocation}</td>
+                                <UseMav/>
+                            </tr>
+                        )
+                    })}
                 </table>
             </body>
         </div>
