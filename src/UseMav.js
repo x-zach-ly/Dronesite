@@ -18,8 +18,6 @@ function UseMav() {
 
             const data = await response.json();
             setOutput(data.output || data.error);
-            console.log(data.output);
-            console.log(data.error);
         } catch (error) {
             console.error("Error:", error);
             setOutput("Failed to run executable.");
@@ -29,16 +27,8 @@ function UseMav() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={userInput}
-                    onChange={(e) => setUserInput(e.target.value)}
-                    placeholder="Enter drone input"
-                />
                 <button type="submit">Run</button>
             </form>
-            <h6>Output:</h6>
-            <pre>{output}</pre>
         </div>
     );
 }
