@@ -5,14 +5,17 @@ import './Instructions.css';
 import './Dropdown'
 import DestinationDropdown from "./Dropdown";
 import UseMav from "./UseMav";
+import LaunchButton from "./LaunchButton"
+import LandButton from "./LandButton.js";
 
 function Instructions() {
 
     const[droneNumber, setDroneNumber] = useState(1);
+    const[status, setStatus] = useState("Idle");
 
     //hard coded rn
     const drones = [
-        {id:'0', status:'idle', currentLocation:'Station 1'}
+        {id:'0', status:status, currentLocation:'Station 1'}
     ];
 
     const columns = Object.keys(drones[0]);
@@ -40,7 +43,9 @@ function Instructions() {
                                 <td>{val.id}</td>
                                 <td>{val.status}</td>
                                 <td>{val.currentLocation}</td>
-                                <UseMav/>
+                                <UseMav status={status} setStatus={setStatus}/>
+                                <LaunchButton/>
+                                <LandButton/>
                             </tr>
                         )
                     })}
