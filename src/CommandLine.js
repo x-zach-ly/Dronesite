@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function UseMav({status, setStatus}) {
+function CommandLine() {
     const [userInput, setUserInput] = useState("");
     const [output, setOutput] = useState("");
 
@@ -8,7 +8,7 @@ function UseMav({status, setStatus}) {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/start-mavproxy", {
+            const response = await fetch("http://localhost:5000/cmd", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -18,7 +18,6 @@ function UseMav({status, setStatus}) {
 
             const data = await response.json();
             setOutput(data.output || data.error);
-            setStatus("Active");
         } catch (error) {
             console.error("Error:", error);
             setOutput("Failed to run executable.");
@@ -32,12 +31,13 @@ function UseMav({status, setStatus}) {
                     type="text"
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
-                    placeholder="Port (e.g. com9)"
+                    placeholder="Command Line"
                 />
-                <button type="submit">Run MavProxy</button>
+                <button type="submit">Submit</button>
             </form>
+            <pre>{output}</pre>
         </div>
     );
 }
 
-export default UseMav;
+export default CommandLine;

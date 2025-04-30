@@ -18,13 +18,15 @@
     height: 20%;
 }
 #userID {
+    margin-left: 18px;
     width: 70%;
 }
 #password {
     width: 70%;
 }
 .Button {
-    width: 70%;
+    margin-left: 73px;
+    width: 71%;
 }
 .ErrorMessage {
     color: red;

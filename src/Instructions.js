@@ -7,6 +7,7 @@ import DestinationDropdown from "./Dropdown";
 import UseMav from "./UseMav";
 import LaunchButton from "./LaunchButton"
 import LandButton from "./LandButton.js";
+import CommandLine from "./CommandLine.js";
 
 function Instructions() {
 
@@ -43,9 +44,7 @@ function Instructions() {
                                 <td>{val.id}</td>
                                 <td>{val.status}</td>
                                 <td>{val.currentLocation}</td>
-                                <UseMav status={status} setStatus={setStatus}/>
-                                <LaunchButton/>
-                                <LandButton/>
+                                <td><UseMav status={status} setStatus={setStatus}/></td>
                             </tr>
                         )
                     })}

@@ -5,7 +5,6 @@ from flask_cors import CORS
 import time
 
 firstIn = 0
-process = None
 
 # Preset commands to input into MAV proxy
 setup = ["module load joystick"]
@@ -48,16 +47,18 @@ def start_mavproxy():
 
 
         # Run the executable inside the Windows console (cmd.exe)
+        global process
         process = subprocess.Popen(
             command,  # Ensure correct executable name
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
+            creationflags=subprocess.CREATE_NEW_CONSOLE
         )
 
+        if(process == None):
+            print("Failed to create process")
+        else:
+            print("Process created successfully")
+
         # Send input and capture output
-        print("sup")
         process.stdin.write(user_input)
         time.sleep(5)
         
@@ -69,10 +70,10 @@ def start_mavproxy():
 @app.route('/launch-drone', methods=['POST'])
 def launch_drone():
     if(process == None):
-        return "Initialize MAVProxy first"
+        print("Process does not exist")
+        return jsonify({"error:": "No running process"})
     try:
         for x in launch:
-            print(x)
             send_command(process, x)
             time.sleep(1)
 
@@ -84,10 +85,9 @@ def launch_drone():
 @app.route('/land-drone', methods=['POST'])
 def land_drone():
     if(process == None):
-        return "Initialize MAVProxy first"
+        return jsonify({"error": "Initialize MAVProxy first"})
     try:
         for x in land:
-            print(x)
             send_command(process, x)
             time.sleep(1)
 
@@ -95,6 +95,19 @@ def land_drone():
         return jsonify({"error": str(e)})
     
     return "Landing Activated"
+
+@app.route('/cmd', methods=['POST'])
+def command_line():
+    try:
+        user_input = request.json.get("input", "")
+        if(process == None):
+            return jsonify({"error": str(e)}), 500
+        send_command(process, user_input)
+        
+        return jsonify({"output": process.stdout.readline()})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
